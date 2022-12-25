@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Grass-Fed, Grass-Finished Organ Products</title>
+  <style>
+    /* CSS styles go here */
+    body {
+      background-color: #f0f0f0;
+    }
+    h1 {
+      color: #bfcabf;
+    }
+    p {
+      color: #333333;
+    }
+    table {
+      border-collapse: collapse;
+      background-color: #ffffff;
+      margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    }
+    th, td {
+      padding: 10px;
+      border: 1px solid #dddddd;
+    }
+    /* Header and button styles */
+    header {
+      background-color: #006600;
+      color: #ffffff;
+      text-align: right;
+      padding: 20px;
+      height: 100px;
+      background-image: url(pexels-pixabay-162240.jpg);
+      background-size: 500px auto;
+      background-repeat: no-repeat;
+      background-position: center;
+      padding: 20px 0;
+
+    }
+    header a {
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 18px;
+      padding: 10px;
+    }
+    header a:hover {
+      background-color: #ede9e9;
+      color: #006600;
+    }
+    /* Footer */
+
+footer {
+  background-color: #ffffff;
+  color: #006600;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px; /* Set the height of the footer */
+  font-size: 8px;
+  padding: 20px 0;
+  text-align: center;
+  line-height: 60px; /* Vertically center the text */
+
+}
+
+footer a {
+  color: #fff;
+  text-decoration: none;
+}
+.column-name {
+    float: center;
+  }
+  .sort-button {
+    float: right;
+    padding-right: 10px;
+  }
+  #sortField {
+    float: right;
+    padding-right: 10px;
+  }
+
+  
+  
+  </style>
+<script>
+    function sortTable(order) {
+      // Get the table
+      var table = document.getElementById("myTable");
+      var sortField = document.getElementById('sort-field').value;
+  
+      // Get the data from the table
+      var rows = document.querySelectorAll('#myTable td');
+      var data = [];
+      for (var i = 0; i < rows.length; i++) {
+        data.push(rows[i]);
+      }
+  
+      // Sort the data based on the selected field
+      data.sort(function(a, b) {
+        if (sortField === 'farms') {
+          // Sort by the farms column
+          return a.innerHTML.localeCompare(b.innerHTML);
+        } else if (sortField === 'ground-beef') {
+          // Sort by the ground-beef column
+          return a.nextSibling.innerHTML.localeCompare(b.nextSibling.innerHTML);
+        } else if (sortField === 'liver') {
+          // Sort by the liver column
+          return a.nextSibling.nextSibling.innerHTML.localeCompare(b.nextSibling.nextSibling.innerHTML);
+        } else if (sortField === 'heart') {
+          // Sort by the heart column
+          return a.nextSibling.nextSibling.nextSibling.innerHTML.localeCompare(b.nextSibling.nextSibling.nextSibling.innerHTML);
+        } else if (sortField === 'marrow-bones') {
+          // Sort by the marrow-bones column
+          return a.nextSibling.nextSibling.nextSibling.nextSibling.innerHTML.localeCompare(b.nextSibling.nextSibling.nextSibling.nextSibling.innerHTML);
+        } else if (sortField === 'delivery') {
+          // Sort by the delivery column
+          return a.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.innerHTML.localeCompare(b.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.innerHTML);
+        } else if (sortField === 'free-shipping-minimum-order') {
+          // Sort by the free-shipping-minimum-order column
+          return a.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.innerHTML.localeCompare(b.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.innerHTML);
+        }
+      });
+  
+      // Reverse the data if the sort order is descending
+      if (order === 'desc') {
+        data.reverse();
+      }
+  
+      // Update the table with the sorted data
+      for (var i = 0; i < rows.length; i++) {
+        rows[i].innerHTML = data[i].innerHTML;
+      }
+    }
+  </script>
+    
+  
+</head>
+<body>
+  <header>
+    <div id="header">
+    </div>
+    <h1>Grass-Fed, Grass-Finished Organ Products</h1>
+    <a href="index.html">Home</a>
+    <a href="farms.html">Farms</a>
+    <a href="livers.html">Liver</a>
+    <a href="hearts.html">Heart</a>
+    <a href="bone_marrow.html">Bone Marrow</a>
+  </header>
+  <p>Welcome to our website! Here you can find a list of farms that offer grass-fed, grass-finished organ products.</p>
+  
+  <table id="myTable">
+    <tr>
+      <select id="sort-field">
+          <option value="farms">Farms</option>
+          <option value="ground-beef">Ground Beef</option>
+          <option value="liver">Liver</option>
+          <option value="heart">Heart</option>
+          <option value="marrow-bones">Marrow Bones</option>
+          <option value="delivery">Delivery</option>
+          <option value="free-shipping-minimum-order">Free Shipping Minimum Order ($)</option>
+        </select>
+        <button class="sort-button" type="button" onclick="sortTable('asc')">
+          <span role="img" aria-label="sort">Asc</span>
+        </button>
+        <button class="sort-button" type="button" onclick="sortTable('desc')">
+          <span role="img" aria-label="sort">Des</span>
+        </button>
+        <th>Farms</th>
+      <th>Location</th>
+      <th>Ground Beef</th>
+      <th>Liver</th>
+      <th>Heart</th>
+      <th>Marrow Bones</th>
+      <th>Delivery</th>
+      <th>Pick up</th>
+      <th>Free Shipping</th>
+      <th>Free Shipping Minimum Order ($)</th>
+      <th>Website Link</th>
+    </tr>
+  </table>
+
+  <script>
+    // Fetch CSV data from the server
+    try {
+        fetch('php2.php')
+  .then(response => response.json())
+  .then(data => {
+    console.log(data);
+
+    // Loop through the array and extract the data for each row
+    data.forEach(row => {
+      let farms = row.farms;
+      let location = row.location;
+      let groundBeef = row.groundBeef;
+      let liver = row.liver;
+      let heart = row.heart;
+      let marrowBones = row.marrowBones;
+      let delivery = row.delivery;
+      let pickup = row.pickup;
+      let freeShipping = row.freeShipping;
+      let freeShippingMinimum = row.freeShippingMinimum;
+      let websiteLink = row.websiteLink;
+
+       // Print the data for each row to the console for debugging
+       console.log(row);
+
+      // Output the data as a table row
+      let tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>${farms}</td>
+        <td>${location}</td>
+        <td>${groundBeef}</td>
+        <td>${liver}</td>
+        <td>${heart}</td>
+        <td>${marrowBones}</td>
+        <td>${delivery}</td>
+        <td>${pickup}</td>
+        <td>${freeShipping}</td>
+        <td>${freeShippingMinimum}</td>
+        <td><a href="${websiteLink}">${websiteLink}</a></td>
+      `;
+      document.getElementById('myTable').appendChild(tr);
+    });
+  })
+  .catch(error => {
+    console.error(error);
+  });
+    } catch (error) {
+      console.error(error);
+    }
+</script>
+
+
+</table>
+</section>
+</main>
+<footer>
+      <p>Copyright My Website</p>
+</footer>
+  </body>
+</html>
